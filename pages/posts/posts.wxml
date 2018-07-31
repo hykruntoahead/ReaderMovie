@@ -1,0 +1,28 @@
+<!--导入模板  -->
+<import src="post-item/post-item-template.wxml" />
+
+<view>
+  <!--滑块视图容器  -->
+  <swiper catchtap="onSwiperTap" indicator-dots='true' indicator-active-color='#ffffff' autoplay='true' interval='5000'>
+    <swiper-item>
+      <image src='/images/wx.png' data-postId='1'></image>
+    </swiper-item>
+    <swiper-item>
+      <image src='/images/vr.png' data-postId='2'></image>
+    </swiper-item>
+    <swiper-item>
+      <image src='/images/iqiyi.png' data-postId='3'></image>
+    </swiper-item>
+  </swiper>
+
+  <!--wx:for-item ;wx:for-index  -->
+  <block wx:for="{{posts_key}}" wx:for-item="item" wx:key="postInfo">
+    <!--//template  ...item 小技巧 （模板item中可去掉item.参数） -->
+    <view catchtap="onPostTap" data-postId='{{item.postId}}'>
+      <template is="postItem" data="{{...item}}" />
+    </view>
+  </block>
+
+
+
+</view>
